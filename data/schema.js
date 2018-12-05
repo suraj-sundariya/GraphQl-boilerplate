@@ -30,13 +30,13 @@ const typeDefs = `
         surname: String
     }
     type Order {
-      _id: String,
+      id: String,
       orderId: String,
       amount: String,
       createdAt: String,
       createdBy: String,
+      users: [User]
     }
 `;
-
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 export default schema;

@@ -2,11 +2,18 @@
 import * as db from './models/index'
 
 const resolvers = {
+    Order: {
+        id: ({ _id }) => _id,
+        async users({}){
+            return await db.User.find();
+        }
+    },
     Query: {
         allUsers() {
           return User.find({});
         },
-        async user(root, args){
+        async user(_, args){
+            console.log('root', root, '  args', args, 'context', context);
             const user = await db.User.findById({_id: args._id});
             return [user];
         },
@@ -17,21 +24,24 @@ const resolvers = {
         }
     },
     Mutation: {
-        addUser(root, args) {
-            let user = new User();
-            user.name = args.name;
-            user.surname = args.surname;
-            return user.save();
+        async addUser(_, args) {
+            console.log('args', args);
+            const insertStatement = {
+                name: args.name,
+                surname: args.surname,
+            };
+            const user = await db.User.create(insertStatement)
+            return user;
         },
-        deleteUser(root, args) {
+        deleteUser(_, args) {
             return User.deleteOne({_id: args.id});
         },
-        updateUser(root, args) {
+        updateUser(_, args) {
             let _tempUser = Object.assign({}, args);
             delete _tempUser.id;
             return User.updateOne({_id: args.id},{$set: _tempUser});
         },
-        async addOrder(root, args) {
+        async addOrder(_, args) {
             const insertStatement = {
                 orderId: args.orderId,
                 amount: args.amount,

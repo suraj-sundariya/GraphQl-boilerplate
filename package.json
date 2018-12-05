@@ -1,7 +1,7 @@
 {
   "name": "kit",
   "version": "1.0.0",
-  "description": "Starting point for the Apollo GraphQL Server tutorial.",
+  "description": "Apollo GraphQL Server tutorial.",
   "main": "server.js",
   "dependencies": {
     "apollo-server-express": "^1.3.0",
@@ -29,14 +29,6 @@
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apollographql/apollo-tutorial-kit.git"
-  },
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/apollographql/apollo-tutorial-kit/issues"
-  },
-  "homepage": "https://github.com/apollographql/apollo-tutorial-kit#readme"
+  "license": "MIT"
 }
