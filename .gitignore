@@ -1,0 +1,8 @@
+
+# Elastic Beanstalk Files
+node_modules/
+*.zip
+bundles/
+.running-port
+*.log
+dist/
