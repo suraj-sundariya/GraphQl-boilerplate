@@ -13,7 +13,6 @@ const resolvers = {
           return User.find({});
         },
         async user(_, args){
-            console.log('root', root, '  args', args, 'context', context);
             const user = await db.User.findById({_id: args._id});
             return [user];
         },
